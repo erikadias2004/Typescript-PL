@@ -23,41 +23,11 @@ import RemoverCliente from "../negocio/removerCliente";
 import RemoverPet from "../negocio/removerPet";
 import RemoverProduto from "../negocio/removerProduto";
 import RemoverServicos from "../negocio/removerServico";
-import Cliente from "../modelo/cliente";
-import CPF from "../modelo/cpf";
-import RG from "../modelo/rg";
-import Telefone from "../modelo/telefone";
-import Pet from "../modelo/pet";
-import Produto from "../modelo/produto";
-import Servico from "../modelo/servico";
 
 console.log(`Bem-vindo ao melhor sistema de gerenciamento de pet shops e clínicas veterinarias`);
 
 let empresa = new Empresa();
 let execucao = true;
-
-// Inserir dados para teste
-for (let i = 1; i <= 10; i++) {
-    let cliente = new Cliente(`Cliente ${i}`, `ClienteSocial ${i}`, new CPF(`000.000.000-${i}`, new Date(2000, i - 1, i)));
-    cliente.getRgs.push(new RG(`000000${i}`, new Date(2000, i - 1, i)));
-    cliente.getTelefones.push(new Telefone(`00`, `00000-000${i}`));
-    empresa.getClientes.push(cliente);
-}
-
-for (let i = 1; i <= 5; i++) {
-    let pet = new Pet(`Pet ${i}`, `Raça ${i}`, `Gênero ${i}`, `Tipo ${i}`);
-    empresa.getClientes[i % 10].getPets.push(pet); // Distribuir os pets entre os clientes
-}
-
-for (let i = 1; i <= 5; i++) {
-    let produto = new Produto(`Produto ${i}`, i * 10);
-    empresa.getProdutos.push(produto);
-}
-
-for (let i = 1; i <= 5; i++) {
-    let servico = new Servico(`Serviço ${i}`, i * 20);
-    empresa.getServicos.push(servico);
-}
 
 while (execucao) {
     console.log(`Opções:`);
